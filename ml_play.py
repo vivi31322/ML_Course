@@ -22,6 +22,7 @@ def ml_loop():
     # === Here is the execution order of the loop === #
     # 1. Put the initialization code here.
     ball_served = False
+    
 
     # 2. Inform the game process that ml process is ready before start the loop.
     comm.ml_ready()
@@ -43,15 +44,31 @@ def ml_loop():
             continue
 
         # 3.3. Put the code here to handle the scene information
-
+        
         # 3.4. Send the instruction for this frame to the game process
         if not ball_served:
             comm.send_instruction(scene_info.frame, PlatformAction.SERVE_TO_LEFT)
             ball_served = True
+            ball_past_x=0
+            ball_past_y=0
         else:
             ball_x=scene_info.ball[0]
-            platform_x=scene_info.platform[0]
-            if ball_x<platform_x:
-               comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
-            elif ball_x>platform_x:
+            ball_y=scene_info.ball[1]
+            platform_x=scene_info.platform[0]+20
+            ty=ball_y-ball_past_y
+            tx=ball_x-ball_past_x
+            m=ty/tx
+            platform_should_be=((400-ball_y)/m)+ball_x
+            if (m*(200-ball_x)+ball_y<400 and tx>0) : 
+                platform_should_be=400-platform_should_be
+            if (m*(-ball_x)+ball_y<400 and tx<0) :
+                platform_should_be*=-1
+            if platform_should_be<platform_x :
+                comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
+            elif platform_should_be>platform_x:
                 comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)
+            elif platform_should_be==platform_x:  
+                comm.send_instruction(scene_info.frame, PlatformAction.NONE)
+            ball_past_x=ball_x
+            ball_past_y=ball_y
+            
