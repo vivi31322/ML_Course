@@ -59,7 +59,7 @@ def ml_loop():
             tx=ball_x-ball_past_x
             m=ty/tx
             platform_should_be=100
-            if t<350:
+            if ball_y<350:
                 platform_should_be=((400-ball_y)/m)+ball_x
                 if (m*(200-ball_x)+ball_y<400 and tx>0) : 
                     platform_should_be=400-platform_should_be/3
