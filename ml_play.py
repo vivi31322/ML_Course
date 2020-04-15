@@ -60,7 +60,7 @@ def ml_loop():
             m=ty/tx
             # platform_should_be=100
             if ty>=0 : #or ball_y>300
-            platform_should_be=((400-ball_y)/m)+ball_x
+                platform_should_be=((400-ball_y)/m)+ball_x
             if (m*(200-ball_x)+ball_y<400 and tx>0) : 
                 platform_should_be=400-platform_should_be*2/3
             elif (m*(-ball_x)+ball_y<400 and tx<0) :
