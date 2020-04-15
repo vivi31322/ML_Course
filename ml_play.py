@@ -59,12 +59,12 @@ def ml_loop():
             tx=ball_x-ball_past_x
             m=ty/tx
             platform_should_be=100
-            if ty>=0 or ball_y>220: 
+            if ty>=0 or ball_y>250: 
                 platform_should_be=((400-ball_y)/m)+ball_x
                 if (m*(200-ball_x)+ball_y<=400 and tx>0) : 
                     platform_should_be=400-platform_should_be
                 elif (m*(-ball_x)+ball_y<=400 and tx<0) :
-                    platform_should_be*-1
+                    platform_should_be*=-1
             if platform_should_be<platform_x :
                 comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
             elif platform_should_be>platform_x:
