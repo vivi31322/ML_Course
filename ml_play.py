@@ -26,15 +26,15 @@ def ml_loop(side: str):
     def move_to(player, pred) : #move platform to predicted position to catch ball 
         if player == '1P':
             if scene_info["platform_1P"][0]+20  > (pred-5) and scene_info["platform_1P"][0]+20 < (pred+5): return (random.random()*10%2)+1 # NONE
-            elif scene_info["platform_1P"][0]+20  > (pred-10) and scene_info["platform_1P"][0]+20 < (pred+10): return 0 # NONE
+            elif scene_info["platform_1P"][0]+20  > (pred-10) and scene_info["platform_1P"][0]+20 < (pred+10): return (random.random()*10%2) # NONE
             elif scene_info["platform_1P"][0]+20 <= (pred-10) : return 1 # goes right
             else : return 2 # goes left
         else :
             if scene_info["platform_2P"][0]+20  > (pred-10) and scene_info["platform_2P"][0]+20 < (pred+10): return 0 # NONE
             elif scene_info["platform_2P"][0]+20 <= (pred-10) : return 1 # goes right
             else : return 2 # goes left
-    def pred_X(ball_x,ball_y,speed_x,speed_y):
-        x = ( scene_info["platform_1P"][1]-ball_y) // speed_y # 幾個frame以後會需要接  # x means how many frames before catch the ball
+    def pred_X(base,ball_x,ball_y,speed_x,speed_y):
+        x =abs( ( base-ball_y) // speed_y) # 幾個frame以後會需要接  # x means how many frames before catch the ball
         pred = ball_x+(speed_x*x)  # 預測最終位置 # pred means predict ball landing site 
         bound = pred // 200 # Determine if it is beyond the boundary
         if (bound > 0): # pred > 200 # fix landing position
@@ -52,22 +52,24 @@ def ml_loop(side: str):
     def ml_loop_for_1P(block_sp): 
         block_x=scene_info["blocker"][0]
         if scene_info["ball_speed"][1] > 0 : # 球正在向下 # ball goes down
-            predi=pred_X(scene_info["ball"][0],scene_info["ball"][1],scene_info["ball_speed"][0],scene_info["ball_speed"][1])
+            predi=pred_X(scene_info["platform_1P"][1],scene_info["ball"][0],scene_info["ball"][1],scene_info["ball_speed"][0],scene_info["ball_speed"][1])
             if 230<scene_info["ball"][1] and 280>scene_info["ball"][1]:
                 x = ( 270-scene_info["ball"][1]) // scene_info["ball_speed"][1]
                 bx=scene_info["blocker"][0]+x*block_sp
                 x=scene_info["ball"][0]+x*scene_info["ball_speed"][0]
                 if x<bx+35 or x>=bx-5:
-                    predi=pred_X(scene_info["ball"][0],scene_info["ball"][1],-scene_info["ball_speed"][0],scene_info["ball_speed"][1]) 
+                    predi=pred_X(scene_info["platform_1P"][1],scene_info["ball"][0],scene_info["ball"][1],-scene_info["ball_speed"][0],scene_info["ball_speed"][1]) 
             return move_to(player = '1P',pred = predi)
         else :# 球正在向上 # ball goes up
             if scene_info["ball"][1]>260:
-                x=scene_info["ball"][0]+scene_info["ball_speed"][0]*((scene_info["ball"][1]-260)//scene_info["ball_speed"][1])
-                predi=pred_X(x,260,-scene_info["ball_speed"][0],-scene_info["ball_speed"][1])-20
-                
+                predi=100
+                x = (scene_info["ball"][1]-270) // scene_info["ball_speed"][1]
+                bx=scene_info["blocker"][0]+x*block_sp
+                x=scene_info["ball"][0]+x*scene_info["ball_speed"][0]
+                if x<bx+35 or x>=bx-5:
+                    predi=pred_X(scene_info["platform_1P"][1],scene_info["ball"][0],scene_info["ball"][1],-scene_info["ball_speed"][0],-scene_info["ball_speed"][1])
                 return move_to(player='1P',pred=predi)
-            else :
-                
+            else:
                 return move_to(player = '1P',pred = 100)
         
 
