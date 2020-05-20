@@ -57,7 +57,7 @@ def ml_loop(side: str):
                 x = ( 270-scene_info["ball"][1]) // scene_info["ball_speed"][1]
                 bx=scene_info["blocker"][0]+x*block_sp
                 x=scene_info["ball"][0]+x*scene_info["ball_speed"][0]
-                if x<bx+40 or x>=bx-10:
+                if x<bx+40 and x>=bx-10:
                     predi=pred_X(scene_info["platform_1P"][1],x,270,-scene_info["ball_speed"][0],scene_info["ball_speed"][1]) 
             return move_to(player = '1P',pred = predi)
         else :# 球正在向上 # ball goes up
@@ -66,7 +66,7 @@ def ml_loop(side: str):
                 x = pred_X(scene_info["ball"][1],scene_info["ball"][0],270,scene_info["ball_speed"][0],scene_info["ball_speed"][1])#(scene_info["ball"][1]-270) // scene_info["ball_speed"][1]
                 bx=scene_info["blocker"][0]+x*block_sp
                 #x=scene_info["ball"][0]+x*scene_info["ball_speed"][0]
-                if x<bx+40 or x>=bx-10:
+                if x<bx+40 and x>=bx-10:
                     predi=pred_X(scene_info["platform_1P"][1],x,270,scene_info["ball_speed"][0],-scene_info["ball_speed"][1])
                 return move_to(player='1P',pred=predi)
             else:
