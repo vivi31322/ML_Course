@@ -25,8 +25,8 @@ def ml_loop(side: str):
     block_pre=0
     def move_to(player, pred) : #move platform to predicted position to catch ball 
         if player == '1P':
-            if scene_info["platform_1P"][0]+20  > (pred-3) and scene_info["platform_1P"][0]+20 < (pred+3): return 0#10*random.random()%2+1  # NONE
-            #elif scene_info["platform_1P"][0]+20  > (pred-5) and scene_info["platform_1P"][0]+20 < (pred+5): return 0  # NONE
+            if scene_info["platform_1P"][0]+20 ==(pred) : return 10*random.random()%2+1  # NONE
+            elif scene_info["platform_1P"][0]+20  > (pred-3) and scene_info["platform_1P"][0]+20 < (pred+3): return 0  # NONE
             elif scene_info["platform_1P"][0]+20 <= (pred-3) : return 1 # goes right
             else : return 2 # goes left
         else :
@@ -53,7 +53,7 @@ def ml_loop(side: str):
         block_x=scene_info["blocker"][0]
         if scene_info["ball_speed"][1] > 0 : # 球正在向下 # ball goes down
             predi=pred_X(scene_info["platform_1P"][1],scene_info["ball"][0],scene_info["ball"][1],scene_info["ball_speed"][0],scene_info["ball_speed"][1])
-            if 230<scene_info["ball"][1] and 280>scene_info["ball"][1]:
+            if 230<scene_info["ball"][1] and 290>scene_info["ball"][1]:
                 x = ( 270-scene_info["ball"][1]) // scene_info["ball_speed"][1]
                 bx=scene_info["blocker"][0]+x*block_sp
                 x=scene_info["ball"][0]+x*scene_info["ball_speed"][0]
