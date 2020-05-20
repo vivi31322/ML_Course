@@ -25,9 +25,9 @@ def ml_loop(side: str):
     block_pre=0
     def move_to(player, pred) : #move platform to predicted position to catch ball 
         if player == '1P':
-            if scene_info["platform_1P"][0]+20  > (pred-1) and scene_info["platform_1P"][0]+20 < (pred+1): return 10*random.random()%3  # NONE
-            elif scene_info["platform_1P"][0]+20  > (pred-5) and scene_info["platform_1P"][0]+20 < (pred+5): return 0  # NONE
-            elif scene_info["platform_1P"][0]+20 <= (pred-5) : return 1 # goes right
+            if scene_info["platform_1P"][0]+20  > (pred-3) and scene_info["platform_1P"][0]+20 < (pred+3): return 0  # NONE
+           # elif scene_info["platform_1P"][0]+20  > (pred-5) and scene_info["platform_1P"][0]+20 < (pred+5): return 0  # NONE
+            elif scene_info["platform_1P"][0]+20 <= (pred-3) : return 1 # goes right
             else : return 2 # goes left
         else :
             if scene_info["platform_2P"][0]+20  > (pred-10) and scene_info["platform_2P"][0]+20 < (pred+10): return 0 # NONE
