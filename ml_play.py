@@ -25,8 +25,8 @@ def ml_loop(side: str):
     block_pre=0
     def move_to(player, pred) : #move platform to predicted position to catch ball 
         if player == '1P':
-            #if scene_info["platform_1P"][0]+20 ==(pred) : return 10*random.random()%2+1  # NONE
-            if scene_info["platform_1P"][0]+20  > (pred-3) and scene_info["platform_1P"][0]+20 < (pred+3): return 10*random.random()%2+1#0  # NONE
+            if scene_info["platform_1P"][0]+20 ==(pred) : return 10*random.random()%2+1  # NONE
+            elif scene_info["platform_1P"][0]+20  > (pred-3) and scene_info["platform_1P"][0]+20 < (pred+3): return 0  # NONE
             elif scene_info["platform_1P"][0]+20 <= (pred-3) : return 1 # goes right
             else : return 2 # goes left
         else :
@@ -44,7 +44,7 @@ def ml_loop(side: str):
                 pred = 200 - (pred - 197*bound)
         elif (bound < 0) : # pred < 0
             if (bound%2 ==1) :
-                pred = abs(pred - (bound+1) *200)
+                pred = abs(pred - (bound+1) *197)
             else :
                 pred = pred + (abs(bound)*(197+10*random.random()%4))
         return pred
@@ -57,7 +57,7 @@ def ml_loop(side: str):
                 x = ( 270-scene_info["ball"][1]) // scene_info["ball_speed"][1]
                 bx=scene_info["blocker"][0]+x*block_sp
                 x=scene_info["ball"][0]+x*scene_info["ball_speed"][0]
-                if x<bx+40 and x>=bx-10:
+                if x<bx+35 and x>=bx-5:
                     predi=pred_X(scene_info["platform_1P"][1],x,270,-scene_info["ball_speed"][0],scene_info["ball_speed"][1]) 
             return move_to(player = '1P',pred = predi)
         else :# 球正在向上 # ball goes up
@@ -66,7 +66,7 @@ def ml_loop(side: str):
                 x = pred_X(scene_info["ball"][1],scene_info["ball"][0],270,scene_info["ball_speed"][0],scene_info["ball_speed"][1])#(scene_info["ball"][1]-270) // scene_info["ball_speed"][1]
                 bx=scene_info["blocker"][0]+x*block_sp
                 #x=scene_info["ball"][0]+x*scene_info["ball_speed"][0]
-                if x<bx+40 and x>=bx-10:
+                if x<bx+35 and x>=bx-5:
                     predi=pred_X(scene_info["platform_1P"][1],x,270,scene_info["ball_speed"][0],-scene_info["ball_speed"][1])
                 return move_to(player='1P',pred=predi)
             else:
