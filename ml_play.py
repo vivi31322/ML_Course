@@ -105,7 +105,8 @@ class MLPlay:
                         return ["SPEED", "MOVE_LEFT"]
                     elif self.car_pos[0 ] < self.lanes[self.car_lane]:
                         return ["SPEED", "MOVE_RIGHT"]
-                    else :return ["SPEED"]
+                    else :
+                        return ["SPEED"]
                 else:
                     if (5 in grid): # NEED to BRAKE
                         if (4 not in grid) :#and (7 not in grid): # turn left 
