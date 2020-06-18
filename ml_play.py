@@ -13,11 +13,12 @@ class MLPlay:
         self.car_pos = (0,0)                        # pos initial
         self.car_lane = self.car_pos[0] // 70       # lanes 0 ~ 8
         self.lanes = [35, 105, 175, 245, 315, 385, 455, 525, 595]  # lanes center
-        speed_rigah=10000
-        speed_lefah=10000
-        speed_rigaf=0
-        speed_lefaf=0
         pass
+    
+    speed_rigah=10000
+    speed_lefah=10000
+    speed_rigaf=0
+    speed_lefaf=0
 
     def update(self, scene_info):
         """
