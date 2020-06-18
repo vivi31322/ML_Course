@@ -17,11 +17,7 @@ class MLPlay:
         pass
     
     
-    speed_ahead = 100
-    speed_rigah=10000
-    speed_lefah=10000
-    speed_rigaf=0
-    speed_lefaf=0   
+  
     def update(self, scene_info):
         """
         9 grid relative position
