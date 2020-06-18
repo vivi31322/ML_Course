@@ -83,9 +83,17 @@ class MLPlay:
                         elif y < 80 and y > -80:
                             grid.add(4)
                             
-            return move(grid= grid, speed_ahead = speed_ahead)
+            return move(grid= grid, speed_ahead = speed_ahead,x_ahead=x_ahead,
+            speed_rigah=speed_rigah,
+            speed_lefah=speed_lefah,
+            speed_rigaf=speed_rigaf,
+            speed_lefaf=speed_lefaf)
         
-        def move(grid, speed_ahead): 
+        def move(grid, speed_ahead,x_ahead,
+            speed_rigah,
+            speed_lefah,
+            speed_rigaf,
+            speed_lefa): 
             # if self.player_no == 0:
             #     print(grid)
             if len(grid) == 0:
@@ -109,6 +117,7 @@ class MLPlay:
                             elif (1 not in grid):
                                 return ["SPEED", "MOVE_LEFT"]
                             else:
+                                if(x_ahead<=100):
                                 return ["BRAKE", "MOVE_LEFT"]
                         elif (6 not in grid):#and (9 not in grid): # turn right
                             if (3 in grid):
