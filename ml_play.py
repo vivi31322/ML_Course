@@ -13,7 +13,7 @@ class MLPlay:
         self.car_vel = 0                            # speed initial
         self.car_pos = (0,0)                        # pos initial
         self.car_lane = self.car_pos[0] // 70       # lanes 0 ~ 8
-        self.lanes = [35, 140, 210, 280, 350, 420, 490, 560, 595]  # lanes center  [, 105, 175, 245, 315, 385, 455, 525, ]
+        self.lanes = [35, 105, 175, 245, 315, 385, 455, 525,595]  # lanes center  [ ]
         pass
     
     
