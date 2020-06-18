@@ -132,8 +132,7 @@ class MLPlay:
                             if self.car_vel < speed_ahead:  # BRAKE
                                 return ["SPEED"]
                             else:
-                                if(x_ahead<=100):
-                                   return ["BRAKE"]
+                                return ["BRAKE"]
                     if (self.car_pos[0] < 35 ):
                         return ["SPEED", "MOVE_RIGHT"]
                     if (self.car_pos[1] < 790 ):
