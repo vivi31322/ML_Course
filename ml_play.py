@@ -1,11 +1,7 @@
 class MLPlay:
     def __init__(self, player):
         self.player = player
-        speed_ahead = 100
-        speed_rigah=10000
-        speed_lefah=10000
-        speed_rigaf=0
-        speed_lefaf=0
+       
         if self.player == "player1":
             self.player_no = 0
         elif self.player == "player2":
@@ -126,7 +122,7 @@ class MLPlay:
                             if self.car_vel < speed_ahead:  # BRAKE
                                 return ["SPEED"]
                             else:
-                                if(x_ahead<=150):
+                                if(x_ahead<=100):
                                    return ["BRAKE"]
                     if (self.car_pos[0] < 60 ):
                         return ["SPEED", "MOVE_RIGHT"]
