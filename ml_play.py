@@ -1,6 +1,11 @@
 class MLPlay:
     def __init__(self, player):
         self.player = player
+        speed_ahead = 100
+        speed_rigah=10000
+        speed_lefah=10000
+        speed_rigaf=0
+        speed_lefaf=0
         if self.player == "player1":
             self.player_no = 0
         elif self.player == "player2":
@@ -76,7 +81,11 @@ class MLPlay:
                             grid.add(4)
                             speed_lefah = car["velocity"]
             return move(grid= grid, speed_ahead = speed_ahead)
-            
+        speed_ahead = 100
+        speed_rigah=10000
+        speed_lefah=10000
+        speed_rigaf=0
+        speed_lefaf=0   
         def move(grid, speed_ahead): 
             # if self.player_no == 0:
             #     print(grid)
