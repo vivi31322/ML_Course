@@ -37,13 +37,13 @@ class MLPlay:
             speed_lefah=10000
             speed_rigaf=0
             speed_lefaf=0
-            if self.car_pos[0] <= 65: # left bound
+            if self.car_pos[0] <= 45: # left bound
                 grid.add(1)
                 speed_lefah=10000
                 grid.add(4)
                 grid.add(7)
                 speed_lefaf=0
-            elif self.car_pos[0] >= 565: # right bound
+            elif self.car_pos[0] >= 585: # right bound
                 grid.add(3)
                 grid.add(6)
                 grid.add(9)
