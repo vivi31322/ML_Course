@@ -100,8 +100,8 @@ class MLPlay:
                             if self.car_vel < speed_ahead:  # BRAKE
                                 return ["SPEED"]
                             else:
-                                if(x_ahead<=100)
-                                return ["BRAKE"]
+                                if(x_ahead<=100):
+                                   return ["BRAKE"]
                     if (self.car_pos[0] < 60 ):
                         return ["SPEED", "MOVE_RIGHT"]
                     if (4 not in grid)and(1  not in grid) and(7 not in grid): # turn left 
