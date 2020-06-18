@@ -32,7 +32,7 @@ class MLPlay:
         def check_grid():
             grid = set()
             speed_ahead = 100
-            x_ahead=0
+           # x_ahead=0
             speed_rigah=10000
             speed_lefah=10000
             speed_rigaf=0
@@ -60,7 +60,7 @@ class MLPlay:
                             grid.add(2)
                             if y < 200:
                                 speed_ahead = car["velocity"]
-                                x_ahead = x
+                               # x_ahead = x
                                 grid.add(5) 
                         elif y < 0 and y > -200:
                             grid.add(8)
@@ -93,7 +93,7 @@ class MLPlay:
             speed_rigah,
             speed_lefah,
             speed_rigaf,
-            speed_lefa): 
+            speed_lefaf): 
             # if self.player_no == 0:
             #     print(grid)
             if len(grid) == 0:
