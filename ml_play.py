@@ -21,7 +21,11 @@ class MLPlay:
         pass
     
     
-
+    speed_ahead = 100
+    speed_rigah=10000
+    speed_lefah=10000
+    speed_rigaf=0
+    speed_lefaf=0   
     def update(self, scene_info):
         """
         9 grid relative position
@@ -36,6 +40,7 @@ class MLPlay:
         def check_grid():
             grid = set()
             speed_ahead = 100
+            x_ahead=0
             speed_rigah=10000
             speed_lefah=10000
             speed_rigaf=0
@@ -81,11 +86,7 @@ class MLPlay:
                             grid.add(4)
                             speed_lefah = car["velocity"]
             return move(grid= grid, speed_ahead = speed_ahead)
-        speed_ahead = 100
-        speed_rigah=10000
-        speed_lefah=10000
-        speed_rigaf=0
-        speed_lefaf=0   
+        
         def move(grid, speed_ahead): 
             # if self.player_no == 0:
             #     print(grid)
