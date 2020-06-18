@@ -117,7 +117,6 @@ class MLPlay:
                             elif (1 not in grid):
                                 return ["SPEED", "MOVE_LEFT"]
                             else:
-                                if(x_ahead<=100):
                                 return ["BRAKE", "MOVE_LEFT"]
                         elif (6 not in grid):#and (9 not in grid): # turn right
                             if (3 in grid):
@@ -133,7 +132,7 @@ class MLPlay:
                             if self.car_vel < speed_ahead:  # BRAKE
                                 return ["SPEED"]
                             else:
-                               # if(x_ahead<=100):
+                                if(x_ahead<=100):
                                    return ["BRAKE"]
                     if (self.car_pos[0] < 35 ):
                         return ["SPEED", "MOVE_RIGHT"]
