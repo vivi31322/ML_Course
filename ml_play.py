@@ -43,12 +43,17 @@ class MLPlay:
             speed_lefaf=0
             if self.car_pos[0] <= 65: # left bound
                 grid.add(1)
+                speed_lefah=10000
                 grid.add(4)
                 grid.add(7)
+                speed_lefaf=0
             elif self.car_pos[0] >= 565: # right bound
                 grid.add(3)
                 grid.add(6)
                 grid.add(9)
+                speed_rigah=10000
+                speed_rigaf=0
+           
 
             for car in scene_info["cars_info"]:
                 if car["id"] != self.player_no:
@@ -75,12 +80,13 @@ class MLPlay:
                     if x < 100 and x > 40:
                         if y > 80 and y < 250:
                             grid.add(1)
+                            speed_lefah = car["velocity"]
                         elif y < -80 and y > -200:
                             grid.add(7)
                             speed_lefaf = car["velocity"]
                         elif y < 80 and y > -80:
                             grid.add(4)
-                            speed_lefah = car["velocity"]
+                            
             return move(grid= grid, speed_ahead = speed_ahead)
         
         def move(grid, speed_ahead): 
