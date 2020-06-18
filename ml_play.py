@@ -15,10 +15,7 @@ class MLPlay:
         self.lanes = [35, 105, 175, 245, 315, 385, 455, 525, 595]  # lanes center
         pass
     
-    speed_rigah=10000
-    speed_lefah=10000
-    speed_rigaf=0
-    speed_lefaf=0
+    
 
     def update(self, scene_info):
         """
@@ -34,6 +31,10 @@ class MLPlay:
         def check_grid():
             grid = set()
             speed_ahead = 100
+            speed_rigah=10000
+            speed_lefah=10000
+            speed_rigaf=0
+            speed_lefaf=0
             if self.car_pos[0] <= 65: # left bound
                 grid.add(1)
                 grid.add(4)
