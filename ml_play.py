@@ -98,9 +98,9 @@ class MLPlay:
                             #leaf=car["velocity"]
                         elif y < 80 and y > -80:
                             grid.add(4)
-            return move(grid= grid, speed_ahead = speed_ahead, leah=leah ,riah=riah )
+            return move(coingrid=coingrid,grid= grid, speed_ahead = speed_ahead, leah=leah ,riah=riah )
             
-        def move(grid, speed_ahead,leah ,riah ): 
+        def move(coingrid,grid, speed_ahead,leah ,riah ): 
             # if self.player_no == 0:
             #     print(grid)
             if len(grid) == 0:
