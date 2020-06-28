@@ -126,14 +126,14 @@ class MLPlay:
                         if (4 not in grid) :
                             if(1 not in grid) or (self.car_vel < leah): # turn left 
                                 return ["SPEED", "MOVE_LEFT"]
-                            elif self.car_vel = leah:
+                            elif self.car_vel == leah:
                                 return ["MOVE_LEFT"]
                             else:
                                 return ["BRAKE", "MOVE_LEFT"]
                         elif (6 not in grid) :
                             if(3 not in grid) or (self.car_vel < riah): # turn left 
                                 return ["SPEED", "MOVE_RIGHT"]
-                            elif self.car_vel = riah:
+                            elif self.car_vel == riah:
                                 return ["MOVE_RIGHT"]
                             else:
                                 return ["BRAKE", "MOVE_RIGHT"]
