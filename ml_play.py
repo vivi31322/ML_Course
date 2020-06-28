@@ -75,9 +75,8 @@ class MLPlay:
                             grid.add(4)
             
             for coin in scene_info["coins"]:
-                x = coin[0]- car["pos"][0] # x relative position
-                print(coin)
-                y = coin[1]- car["pos"][1] # y relative position
+                x = self.car_pos[0] - coin[0] # x relative position
+                y = self.car_pos[1] - coin[1] # y relative position
                 if x <= 40 and x >= -40 :      
                     if y > 0 and y < 300:
                         coingrid.add(2)
